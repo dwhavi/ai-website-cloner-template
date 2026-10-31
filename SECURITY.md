@@ -1,52 +1,40 @@
-# Security Policy
+# 보안 정책
 
-## Supported versions
+## 지원하는 버전
 
-This project is a template rather than a versioned library. Security fixes are
-applied to the latest version of the `master` branch.
+이 프로젝트는 버전이 있는 라이브러리가 아니라 템플릿입니다. 보안 수정은 `master` 브랜치의 최신 버전에 적용됩니다.
 
-Projects created from this template do not receive fixes automatically. Their
-maintainers are responsible for reviewing relevant changes and updating their
-own copies.
+이 템플릿으로 만든 프로젝트는 자동으로 수정 사항을 받지 않습니다. 각 관리자가 관련 변경을 검토하고 자신의 사본을 업데이트할 책임이 있습니다.
 
-## Reporting a vulnerability
+## 취약점 신고
 
-Please do not disclose vulnerability details in a public issue, pull request,
-discussion, or Discord message.
+공개 이슈, pull request, 토론, Discord 메시지에는 취약점 세부 내용을 공개하지 마세요.
 
-Use GitHub's private
+대신 GitHub 비공개
 [Report a vulnerability](https://github.com/JCodesMore/ai-website-cloner-template/security/advisories/new)
-form instead. Include, when available:
+양식을 이용하세요. 가능하면 다음을 포함해 주세요:
 
-- A clear description of the vulnerability and its potential impact
-- The affected files, dependencies, configuration, or commit
-- Steps to reproduce the issue or a minimal proof of concept
-- Any suggested mitigation or fix
+- 취약점과 잠재적 영향에 대한 명확한 설명
+- 영향을 받는 파일, 의존성, 설정 또는 커밋
+- 문제를 재현하는 단계 또는 최소 개념 증명
+- 제안하는 완화책 또는 수정안
 
-We will acknowledge the report as soon as practical, investigate it, and
-coordinate with you before any public disclosure.
+신고가 오면 최대한 빨리 확인하고, 조사한 뒤 공개 전에 협의하겠습니다.
 
-If the private form is unavailable, you may use the
-[Discord community](https://discord.gg/hrTSX5yTpB) only to ask a maintainer for
-a private contact method. Do not post vulnerability details there.
+비공개 양식을 쓸 수 없으면
+[Discord 커뮤니티](https://discord.gg/hrTSX5yTpB)에서 관리자에게 비공개 연락 수단을 문의하세요. 그곳에도 취약점 세부 내용을 올리지 마세요.
 
-## Scope
+## 범위
 
-Security reports may cover:
+보안 신고 대상:
 
-- Code and dependencies shipped on the `master` branch
-- Helper and synchronization scripts under `scripts/`
-- Repository configuration or defaults that could make generated projects
-  insecure
-- AI-agent instructions that introduce a concrete security vulnerability
+- `master` 브랜치에 포함된 코드와 의존성
+- `scripts/` 아래의 헬퍼·동기화 스크립트
+- 생성된 프로젝트를 불안정하게 만들 수 있는 저장소 설정·기본값
+- 구체적인 보안 취약점을 유발하는 AI 에이전트 지침
 
-Generated website code, third-party services, vulnerabilities in unrelated
-websites, and automated audit output without a demonstrated impact on this
-template are outside this project's security scope.
+생성된 웹사이트 코드, 서드파티 서비스, 무관한 웹사이트의 취약점, 이 템플릿에 미치는 영향이 입증되지 않은 자동 감사 결과물은 이 프로젝트의 보안 범위를 벗어납니다.
 
-## Responsible use
+## 책임 있는 사용
 
-This template is intended for authorized development, migration, recovery, and
-learning. See [Not Intended For](README.md#not-intended-for) for prohibited
-uses. Reports about abuse or copied content should not include sensitive
-security details in public channels.
+이 템플릿은 허가된 개발, 이전, 복구, 학습을 위한 것입니다. 금지된 용도는 [의도되지 않은 용도](README.md#의도되지-않은-용도)를 참고하세요. 오용이나 복사된 콘텐츠 신고에는 공개 채널에 민감한 보안 세부 내용을 포함하지 마세요.

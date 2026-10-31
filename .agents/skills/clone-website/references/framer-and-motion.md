@@ -1,37 +1,37 @@
-# Framer and animated pages
+# Framer와 애니메이션 페이지
 
-Use for Framer-generated pages or animation beyond simple hover transitions. Framer is the publishing tool; reproduce its rendered design and behavior in the target framework.
+Framer로 만든 페이지나 단순 호버 전환을 넘는 애니메이션에 사용하세요. Framer는 발행 도구일 뿐이며, 대상 프레임워크에서 렌더링된 디자인과 동작을 재현하세요.
 
-## Framer inspection
+## Framer 살펴보기
 
-Framer can render duplicate desktop/mobile variants and hide one with breakpoint classes. Read **visible** layout/computed styles at each viewport instead of copying all nodes. `data-framer-name` identifies sections; generated classes are not component architecture.
+Framer는 데스크톱/모바일 변형을 중복 렌더링하고 브레이크포인트 클래스로 하나를 숨길 수 있습니다. 모든 노드를 복사하지 말고 각 뷰포트에서 **보이는** 레이아웃/계산된 스타일을 읽으세요. `data-framer-name`이 섹션을 식별합니다. 생성된 클래스는 컴포넌트 구조가 아닙니다.
 
-Wait for hydration/entrance animations and scroll through content below the fold. Capture initial/revealed positions when movement matters. Full-page screenshots alone can leave offscreen reveal content invisible.
+하이드레이션/입장 애니메이션을 기다리고 폴드 아래 콘텐츠까지 스크롤하세요. 움직임이 중요하면 초기/리빌 위치를 캡처하세요. 전체 페이지 스크린샷만으로는 화면 밖 리빌 콘텐츠가 보이지 않을 수 있습니다.
 
-Use `currentSrc`, enough resolution for the largest rendered size, and the observed crop. Framer CDN image URLs can return AVIF despite PNG filenames. Verify bytes and use the actual format locally. Fonts and SVG definitions are part of fidelity.
+`currentSrc`를 쓰고, 가장 크게 렌더링되는 크기에 충분한 해상도를 쓰며, 관찰된 크롭을 쓰세요. Framer CDN 이미지 URL은 PNG 파일명인데도 AVIF를 반환할 수 있습니다. 바이트를 검증하고 실제 형식을 로컬에 쓰세요. 폰트와 SVG 정의도 충실도에 포함됩니다.
 
-Check each font's actual weight/style before declaring `@font-face`; a static medium file advertised as a variable family makes regular text too heavy. If asset bundling misses a public font, retrieve its observed URL directly. Exported inline SVGs need their namespace and referenced definitions to work as standalone files; confirm they render through the local `<img>` URL, not only inline.
+`@font-face`를 선언하기 전에 각 폰트의 실제 굵기/스타일을 확인하세요. 가변 패밀리로 광고된 정적 medium 파일 때문에 본문이 너무 굵어질 수 있습니다. 에셋 번들링에서 공개 폰트를 놓치면 관찰된 URL에서 직접 가져오세요. 내보낸 인라인 SVG는 독립 파일로 동작하려면 네임스페이스와 참조 정의가 필요합니다. 인라인이 아니라 로컬 `<img>` URL로 렌더링되는지 확인하세요.
 
-Animated SVGs can depend on ancestor selectors, shared symbols, fonts, and stylesheet keyframes. Preserve those asset dependencies and watch a full cycle: replacing a repeating sequence with a few objects that pulse together loses the source behavior.
+애니메이션 SVG는 조상 셀렉터, 공유 심볼, 폰트, 스타일시트 키프레임에 의존할 수 있습니다. 이런 에셋 의존성을 보존하고 전체 사이클을 지켜보세요. 반복 시퀀스를 함께 깜빡이는 몇 개 오브젝트로 바꾸면 원본 동작이 사라집니다.
 
-For CMS grids, visit supplied routes and exercise every filter. Map destinations: a static first-state list does not reproduce filtering/navigation.
+CMS 그리드는 제공된 라우트를 방문하고 모든 필터를 실행해 보세요. 목적지를 매핑하세요. 첫 상태의 정적 목록만으로는 필터링/이동을 재현할 수 없습니다.
 
-Rebuild semantic components/data. Deployment scripts and minified wrappers are evidence, not code to paste into a new app.
+시맨틱 컴포넌트/데이터로 다시 만드세요. 배포 스크립트와 압축 래퍼는 증거일 뿐 새 앱에 붙여넣을 코드가 아닙니다.
 
-## Motion inspection
+## 모션 살펴보기
 
-| Driver | Evidence | Typical implementation |
+| 구동 방식 | 근거 | 일반적인 구현 |
 |---|---|---|
-| Time | cycle, pause, direction, looping media | CSS keyframes, video, animation library |
-| Scroll reveal | entry boundary, start/end positions, reverse replay | IntersectionObserver + CSS |
-| Continuous scroll | progress, pin duration, layer speeds | scroll progress + CSS variables or library |
-| Click/hover | alternate content, transition, dismissal/navigation | React state + CSS |
-| Pointer/canvas | response, renderer/media identity | matched renderer or disclosed approximation |
+| 시간 | 사이클, 정지, 방향, 반복 미디어 | CSS 키프레임, 비디오, 애니메이션 라이브러리 |
+| 스크롤 리빌 | 진입 경계, 시작/끝 위치, 역재생 | IntersectionObserver + CSS |
+| 연속 스크롤 | 진행률, 고정 길이, 레이어 속도 | 스크롤 진행률 + CSS 변수 또는 라이브러리 |
+| 클릭/호버 | 대체 콘텐츠, 전환, 닫기/이동 | React state + CSS |
+| 포인터/캔버스 | 반응, 렌더러/미디어 식별 | 맞는 렌더러 또는 공개된 근사치 |
 
-Observe both directions and mobile. A pinned scene needs scroll distance and release behavior, not just sticky positioning. An animated visual may be a video: use actual media when available.
+양방향과 모바일을 모두 관찰하세요. 고정된 장면은 sticky 지정이 아니라 스크롤 거리와 해제 동작이 필요합니다. 움직이는 비주얼은 비디오일 수 있습니다. 가능하면 실제 미디어를 쓰세요.
 
-Match measurable easing/duration. Clean up animation loops with component lifecycle. Framer's smooth scrolling is Lenis: a `lenis` class on `html` or a `window.lenis` global exposes the options to reproduce.
+측정 가능한 이징/지속 시간을 맞추세요. 컴포넌트 라이프사이클로 애니메이션 루프를 정리하세요. Framer의 스무스 스크롤은 Lenis입니다. `html`의 `lenis` 클래스나 `window.lenis` 전역에서 재현할 옵션을 확인하세요.
 
-## Verify the experience
+## 경험 검증
 
-Compare initial, active, and settled states at comparable positions. Test controls during motion and navigate away/back to detect stuck states. Confirm motion does not widen the document or hide content permanently. Name any unimplemented shader/canvas behavior rather than presenting a still as proof.
+비슷한 위치에서 초기·진행 중·종료 상태를 비교하세요. 모션 중에 컨트롤을 조작하고, 왔다 갔다 이동하며 멈춘 상태가 있는지 확인하세요. 모션 때문에 문서가 넓어지거나 콘텐츠가 영구히 가려지지 않는지 확인하세요. 구현하지 않은 셰이더/캔버스 동작은 이름을 밝히고, 정지 화면을 증거로 내세우지 마세요.

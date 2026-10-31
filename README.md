@@ -2,15 +2,15 @@
 
 # AI Website Cloner Template
 
-### Clone any website with one command
+### 하나의 명령어로 어떤 웹사이트든 복제하세요
 
-Give your AI coding agent a URL and watch it recreate the website as a clean Next.js app.
+AI 코딩 에이전트에게 URL을 건네면, 깔끔한 Next.js 앱으로 다시 만들어지는 과정을 지켜보세요.
 
-**Best results with [Claude Code](https://docs.anthropic.com/en/docs/claude-code) + Opus 5.5. Also supports Codex, Cursor, and OpenCode.**
+**[Claude Code](https://docs.anthropic.com/en/docs/claude-code) + Opus 5.5 조합에서 가장 좋은 결과를 얻습니다. Codex, Cursor, OpenCode도 지원합니다.**
 
 [![Use this template](https://img.shields.io/badge/Use_this_template-Create_your_copy-2ea44f?style=for-the-badge&logo=github&logoColor=white)](https://github.com/JCodesMore/ai-website-cloner-template/generate) [![Discord](https://img.shields.io/badge/Join_the_community-Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/hrTSX5yTpB)
 
-[Quick Start](#quick-start) · [Watch Demo](#demo) · [Supported Platforms](#supported-platforms)
+[빠른 시작](#빠른-시작) · [데모 보기](#데모) · [지원 플랫폼](#지원-플랫폼)
 
 <a href="https://github.com/JCodesMore/ai-website-cloner-template/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License" /></a> <a href="https://github.com/JCodesMore/ai-website-cloner-template"><img src="https://img.shields.io/github/stars/JCodesMore/ai-website-cloner-template?style=flat" alt="Stars" /></a> <img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/JCodesMore/ai-website-cloner-template/badges/token-badge.json" alt="tokens" />
 
@@ -20,17 +20,17 @@ Give your AI coding agent a URL and watch it recreate the website as a clean Nex
 
 ---
 
-## Demo
+## 데모
 
-[![Watch the demo](docs/design-references/comparison.png)](https://youtu.be/O669pVZ_qr0)
+[![데모 보기](docs/design-references/comparison.png)](https://youtu.be/O669pVZ_qr0)
 
-> Click the image above to watch the full demo on YouTube.
+> 위 이미지를 클릭하면 YouTube에서 전체 데모를 볼 수 있습니다.
 
-## Quick Start
+## 빠른 시작
 
-### 1. Set up your project
+### 1. 프로젝트 준비
 
-**Recommended: ask your agent.** Paste this into Codex, Claude Code, or your coding agent:
+**권장 방법: 에이전트에게 시키세요.** 아래 문구를 Codex, Claude Code 또는 사용 중인 코딩 에이전트에 붙여넣으세요:
 
 ```text
 Set up https://github.com/JCodesMore/ai-website-cloner-template
@@ -40,67 +40,67 @@ install dependencies, and run npm run check. Leave it ready for me
 to clone a website.
 ```
 
-**Or create your own GitHub repository:**
+**또는 직접 GitHub 저장소를 만드세요:**
 
 [![Use this template](https://img.shields.io/badge/Use_this_template-Create_your_copy-2ea44f?style=for-the-badge&logo=github&logoColor=white)](https://github.com/JCodesMore/ai-website-cloner-template/generate)
 
-Give it a name and click **Create repository**. Then give your agent the new repository's link and ask it to clone it onto your computer, install dependencies, and run `npm run check`.
+이름을 정하고 **Create repository**를 클릭하세요. 그런 다음 새 저장소의 링크를 에이전트에게 주고, 컴퓨터에 복제한 뒤 의존성을 설치하고 `npm run check`를 실행해 달라고 요청하세요.
 
-### 2. Clone a website
+### 2. 웹사이트 복제
 
-Open the project in your agent with browser access enabled. In Claude Code or Cursor, run:
+브라우저 접근이 켜진 상태로 에이전트에서 프로젝트를 여세요. Claude Code나 Cursor에서는 다음을 실행합니다:
 
 ```text
 /clone-website https://example.com
 ```
 
-Replace the URL with the website you want to recreate. Once it's built, ask your agent for any changes you want.
+URL은 복제하고 싶은 웹사이트 주소로 바꾸세요. 빌드가 끝나면 원하는 변경 사항을 에이전트에게 요청하세요.
 
-## Supported Platforms
+## 지원 플랫폼
 
-| Agent                                                         | Status                     |
+| 에이전트                                                     | 상태                   |
 | ------------------------------------------------------------- | -------------------------- |
-| [Claude Code](https://docs.anthropic.com/en/docs/claude-code) | **Recommended** — Opus 5.5 |
-| [Codex CLI](https://github.com/openai/codex)                  | Supported                  |
-| [OpenCode](https://opencode.ai/)                              | Supported                  |
-| [Cursor](https://cursor.com/)                                 | Supported                  |
+| [Claude Code](https://docs.anthropic.com/en/docs/claude-code) | **권장** — Opus 5.5 |
+| [Codex CLI](https://github.com/openai/codex)                  | 지원됨                  |
+| [OpenCode](https://opencode.ai/)                              | 지원됨                  |
+| [Cursor](https://cursor.com/)                                 | 지원됨                  |
 
-## Prerequisites
+## 사전 준비물
 
-- [Node.js](https://nodejs.org/) 24+
-- An AI coding agent (see [Supported Platforms](#supported-platforms))
+- [Node.js](https://nodejs.org/) 24 이상
+- AI 코딩 에이전트([지원 플랫폼](#지원-플랫폼) 참고)
 
-## Tech Stack
+## 기술 스택
 
 - **Next.js 16** — App Router, React 19, TypeScript strict
-- **shadcn/ui** — Base UI primitives + Tailwind CSS v4
-- **Tailwind CSS v4** — oklch design tokens
-- **Lucide React** — default icons (replaced by extracted SVGs during cloning)
+- **shadcn/ui** — 기본 UI 프리미터티브 + Tailwind CSS v4
+- **Tailwind CSS v4** — oklch 디자인 토큰
+- **Lucide React** — 기본 아이콘(클로닝 과정에서 추출된 SVG로 교체됨)
 
-## How It Works
+## 동작 방식
 
-The `/clone-website` skill follows four steps:
+`/clone-website` 스킬은 네 단계로 진행됩니다:
 
-1. **Map** — map source URLs to local routes and preserve existing work.
-2. **Observe** — inspect desktop/mobile pages, extract real assets and fonts, and exercise alternate states.
-3. **Build** — implement editable components and working interactions; delegate independent sections when useful.
-4. **Compare** — review source and local pages at matched sizes/states, repair visible differences, and run the production check.
+1. **맵(Map)** — 원본 URL을 로컬 라우트에 매핑하고 기존 작업을 보존합니다.
+2. **관찰(Observe)** — 데스크톱/모바일 페이지를 살펴보고, 실제 에셋과 폰트를 추출하며, 다양한 상태를 직접 실행해 봅니다.
+3. **빌드(Build)** — 편집 가능한 컴포넌트와 동작하는 인터랙션을 구현합니다. 필요하면 독립적인 섹션은 위임합니다.
+4. **비교(Compare)** — 원본과 로컬 페이지를 같은 크기/상태에서 검토하고, 보이는 차이를 고친 뒤 프로덕션 검사를 실행합니다.
 
-Framer pages and animated sites have focused inspection guidance for responsive variants, media, sticky scenes, and scroll/time-driven motion. Direct HTTP or asset tools handle extraction where practical; browser comparisons establish appearance and behavior. Deliverables include route mappings, run instructions, comparison screenshots, and any remaining gaps.
+Framer 페이지와 애니메이션이 많은 사이트에는 반응형 변형, 미디어, 고정(sticky) 장면, 스크롤/시간 기반 모션에 대한 전용 살펴보기 안내가 있습니다. 가능하면 직접 HTTP나 에셋 도구로 추출하고, 브라우저 비교로 모양과 동작을 확정합니다. 산출물에는 라우트 매핑, 실행 방법, 비교 스크린샷, 남은 차이점이 포함됩니다.
 
-## Use Cases
+## 사용 사례
 
-- **Platform migration** — rebuild a site you own from WordPress/Webflow/Squarespace into a modern Next.js codebase
-- **Lost source code** — your site is live but the repo is gone, the developer left, or the stack is legacy. Get the code back in a modern format
-- **Learning** — deconstruct how production sites achieve specific layouts, animations, and responsive behavior by working with real code
+- **플랫폼 이전** — 직접 소유한 사이트를 WordPress/Webflow/Squarespace에서 현대적인 Next.js 코드베이스로 다시 만듭니다
+- **소스 코드 분실** — 사이트는 살아 있는데 저장소가 사라졌거나, 개발자가 떠났거나, 스택이 레거시인 경우. 현대적인 형태로 코드를 되찾습니다
+- **학습** — 실제 코드로 작업하면서 프로덕션 사이트가 특정 레이아웃, 애니메이션, 반응형 동작을 어떻게 구현하는지 분해해 봅니다
 
-## Not Intended For
+## 의도되지 않은 용도
 
-- **Phishing or impersonation** — this project must not be used for deceptive purposes, impersonation, or any activity that breaks the law.
-- **Passing off someone's design as your own** — logos, brand assets, and original copy belong to their owners.
-- **Violating terms of service** — some sites explicitly prohibit scraping or reproduction. Check first.
+- **피싱 또는 사칭** — 기만적 목적, 사칭, 법을 위반하는 활동에는 이 프로젝트를 사용해서는 안 됩니다.
+- **타인의 디자인을 자기 것인 양 사용** — 로고, 브랜드 에셋, 원문 카피의 권리는 각 소유자에게 있습니다.
+- **이용약관 위반** — 스크래핑이나 복제를 명시적으로 금지하는 사이트도 있습니다. 먼저 확인하세요.
 
-## Project Structure
+## 프로젝트 구조
 
 ```
 src/
@@ -124,7 +124,7 @@ AGENTS.md           # Agent instructions (single source of truth)
 CLAUDE.md           # Claude Code config (imports AGENTS.md)
 ```
 
-## Commands
+## 명령어
 
 ```bash
 npm run dev    # Start dev server
@@ -134,21 +134,21 @@ npm run typecheck # TypeScript check
 npm run check  # Run lint + typecheck + build
 ```
 
-### If using docker
+### docker를 사용하는 경우
 
 ```bash
 docker compose up app --build # build and run the app
 docker compose up dev --build # run the app in dev mode on port 3001
 ```
 
-## Agent Support
+## 에이전트 지원
 
-The project keeps one portable Agent Skill at `.agents/skills/clone-website/`. Codex, Cursor, and OpenCode read it directly. Claude Code uses the small command bridge at `.claude/commands/clone-website.md` so `/clone-website` and its arguments continue to work without exposing a duplicate skill to the other agents.
+이 프로젝트는 `.agents/skills/clone-website/`에 이식성 높은 Agent Skill 하나를 유지합니다. Codex, Cursor, OpenCode는 이를 직접 읽습니다. Claude Code는 `.claude/commands/clone-website.md`의 작은 명령어 브리지를 사용하므로, `/clone-website`와 인자가 그대로 동작하면서 다른 에이전트에는 중복 스킬이 노출되지 않습니다.
 
-## Star History
+## 스타 히스토리
 
 ![Star History Chart](docs/assets/star-history.png)
 
-## License
+## 라이선스
 
 MIT

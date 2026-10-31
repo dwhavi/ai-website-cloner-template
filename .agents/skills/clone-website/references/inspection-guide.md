@@ -1,41 +1,41 @@
-# Inspect a source page
+# 원본 페이지 살펴보기
 
-Capture evidence that changes the build: layout, content, assets, and states. One page brief usually suffices.
+빌드를 바꾸는 증거를 잡으세요: 레이아웃, 콘텐츠, 에셋, 상태. 보통 페이지 브리프 하나로 충분합니다.
 
-## Visual structure
+## 시각 구조
 
-Record section order, max-width, gutters, column proportions, and sticky/fixed layers. Measure heading/body family, weight, size, line height, and letter spacing. Match the actual font before adjusting widths to repair wrapping.
+섹션 순서, 최대 너비, 거터, 컬럼 비율, 고정(sticky/fixed) 레이어를 기록하세요.見出し/본문의 글꼴, 굵기, 크기, 줄높이, 자간을 재세요. 줄바꿈을 고치려고 너비를 손대기 전에 실제 폰트부터 맞추세요.
 
-Sweep width from mobile to beyond the desktop design, narrowing around each transition; max-width caps only show on wider screens. Record stacking, navigation/menu changes, type reflow, and different crops/assets. A scaled desktop screenshot is not a mobile reference.
+모바일에서 데스크톱 디자인을 넘어설 때까지 너비를 훑고, 각 전환점 근처에서는 좁게 살피세요. 최대 너비 제한은 더 넓은 화면에서만 드러납니다. 쌓임, 내비게이션/메뉴 변화, 타입 리플로, 다른 크롭/에셋을 기록하세요. 데스크톱 스크린샷을 축소한 것은 모바일 레퍼런스가 아닙니다.
 
-Capture whole-page evidence after visiting lazy/reveal sections, plus full-size hero and interaction views. Fonts or entry motion can make early screenshots misleading.
+지연 로딩/리빌 섹션을 방문한 뒤 전체 페이지 증거를 잡고, 히어로와 인터랙션 화면은 원본 크기로 잡으세요. 폰트나 입장 모션 때문에 이른 스크린샷이 오해를 부를 수 있습니다.
 
-## Assets
+## 에셋
 
-Use available browser asset inventory/download tools or DOM-backed URLs with direct downloads. Include:
+사용 가능한 브라우저 에셋 목록/다운로드 도구나 DOM 기반 URL을 직접 다운로드에 쓰세요. 포함 항목:
 
-- Images: `currentSrc`, `srcset`, dimensions, `object-fit`, crop position, alt text.
-- Layers: visible images/backgrounds/SVGs and stacking/positioning.
-- Video: source, poster, autoplay/loop/mute behavior, aspect ratio, controls.
-- Fonts: actual loaded family/weights and files used by the page.
-- SVG: viewBox plus referenced gradients, masks, symbols, and filters.
+- 이미지: `currentSrc`, `srcset`, 치수, `object-fit`, 크롭 위치, alt 텍스트.
+- 레이어: 보이는 이미지/배경/SVG와 쌓임/위치.
+- 비디오: 원본, 포스터, 자동재생/반복/음소거 동작, 화면비, 컨트롤.
+- 폰트: 페이지가 실제로 불러온 패밀리/굵기와 사용 파일.
+- SVG: viewBox와 참조된 그라데이션, 마스크, 심볼, 필터.
 
-Save assets used by the cloned scope and their source URL → local path mapping. Distinguish repeated filenames. Check content type, dimensions, and browser rendering: HTTP success can return an error page; CDNs may change formats without changing URL extensions.
+복제 범위에 쓰는 에셋과 원본 URL → 로컬 경로 매핑을 저장하세요. 이름이 겹치는 파일을 구분하세요. 콘텐츠 타입, 치수, 브라우저 렌더링을 확인하세요. HTTP 성공이 오류 페이지를 반환할 수 있고, CDN은 URL 확장자를 바꾸지 않고 형식을 바꿀 수 있습니다.
 
-If a browser bundle fails for a public font/image, download the observed URL directly. Keep unresolved assets explicit and preserve applicable attribution.
+공개 폰트/이미지에서 브라우저 번들이 실패하면 관찰된 URL을 직접 다운로드하세요. 못 푼 에셋은 명시하고 해당 저작자 표시를 유지하세요.
 
-## State evidence
+## 상태 증거
 
-Record trigger → visible result. Scroll before clicking so pinned scenes are not mistaken for tabs. Inspect alternate content, selection, layout, and transition.
+트리거 → 보이는 결과를 기록하세요. 고정 장면을 탭으로 착각하지 않도록 클릭 전에 스크롤하세요. 대체 콘텐츠, 선택, 레이아웃, 전환을 살펴보세요.
 
-Measure important before/after styles using the browser's supported DOM evaluation. For a selector observed on the page, useful fields are textContent, getBoundingClientRect(), and computed font, letterSpacing, color, background, gap, padding, borderRadius, position, transform, and transition.
+브라우저가 지원하는 DOM 평가로 중요한 전후 스타일을 재세요. 페이지에서 관찰된 셀렉터라면 textContent, getBoundingClientRect(), 계산된 font, letterSpacing, color, background, gap, padding, borderRadius, position, transform, transition 필드가 유용합니다.
 
-Page-wide scripts (smooth scrolling, snapping, cursor followers, page transitions) change every interaction. Identify them from root classes, globals, and loaded scripts, and record their options.
+페이지 전체 스크립트(스무스 스크롤, 스내핑, 커서 팔로워, 페이지 전환)는 모든 인터랙션을 바꿉니다. 루트 클래스, 전역, 로드된 스크립트에서 식별하고 옵션을 기록하세요.
 
-Evaluation environments differ: read-only DOM snapshots may omit APIs such as `document.fonts`. Use asset metadata or developer inspection for missing measurements rather than inferring values from an unsupported API.
+평가 환경은 다릅니다. 읽기 전용 DOM 스냅샷은 `document.fonts` 같은 API를 생략할 수 있습니다. 지원하지 않는 API로 값을 추측하지 말고 에셋 메타데이터나 개발자 검사로 빠진 치수를 구하세요.
 
-## Handoff and comparison
+## 전달과 비교
 
-Provide screenshots, geometry/type, content, local asset paths, responsive changes, and trigger/state behavior. Establish shared navigation/styles before parallel page work.
+스크린샷, 기하학/타입, 콘텐츠, 로컬 에셋 경로, 반응형 변화, 트리거/상태 동작을 넘기세요. 병렬 페이지 작업 전에 공유 내비게이션/스타일을 먼저 잡으세요.
 
-Keep comparison screenshots labeled by URL/route and viewport. Test controls and inspect their visible result. Check mobile overflow and failed assets separately from similarity.
+비교 스크린샷에는 URL/라우트와 뷰포트를 표시하세요. 컨트롤을 조작하고 보이는 결과를 확인하세요. 모바일 오버플로와 실패한 에셋은 유사도와 분리해서 확인하세요.

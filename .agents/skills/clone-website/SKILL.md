@@ -3,59 +3,59 @@ name: clone-website
 description: Rebuild existing web pages as working local code, matching their real content, assets, responsive layout, and interactions. Use for website cloning, replication, or reverse engineering, including Framer sites and animated pages.
 ---
 
-# Clone a website
+# 웹사이트 복제
 
-Recreate the supplied pages in the current app. Match the source before adding a new design direction. Deliver working, editable code: screenshots, iframes, and downloaded production bundles are references, not the implementation.
+제공된 페이지를 현재 앱에서 다시 만드세요. 새로운 디자인 방향을 더하기 전에 먼저 원본과 맞추세요. 동작하고 편집 가능한 코드를 결과물로 내세요. 스크린샷, iframe, 다운로드한 프로덕션 번들은 참고 자료이지 구현물이 아닙니다.
 
-## 1. Map the work
+## 1. 작업 매핑
 
-Read project instructions, the actual framework/scripts, and existing routes. Open the source URLs with the available browser. Prefer direct HTTP, asset tools, or APIs for extraction when practical; use the browser to establish appearance and behavior.
+프로젝트 지침, 실제 프레임워크/스크립트, 기존 라우트를 읽으세요. 사용 가능한 브라우저로 원본 URL을 여세요. 가능하면 직접 HTTP, 에셋 도구, API로 추출하고, 브라우저로는 모양과 동작을 확정하세요.
 
-Record a short source-to-local route map and the files each page owns. Follow the app's conventions; in this template use `src/app/`, `src/components/sites/<site>/`, `public/sites/<site>/`, and `docs/research/<site>/`. Give origins, pages, and downloads distinct names; add a port or URL hash when readable names collide.
+원본-로컬 라우트 맵과 각 페이지가 소유한 파일을 짧게 기록하세요. 앱의 관례를 따르세요. 이 템플릿에서는 `src/app/`, `src/components/sites/<site>/`, `public/sites/<site>/`, `docs/research/<site>/`를 사용합니다. 출처·페이지·다운로드에 서로 다른 이름을 주고, 읽기 쉬운 이름이 충돌하면 포트나 URL 해시를 덧붙이세요.
 
-- A first root clone may replace the untouched template homepage.
-- Preserve source pathnames for multiple pages from one origin. Query/fragment variations usually represent states of the same route; reproduce those states.
-- Preserve existing authored routes/assets. Update them when requested; resolve unrequested route collisions before replacing anything.
-- When adding pages to an existing clone, extend its layout and global styles without replacing the styles used by existing pages.
-- Use separate apps for different origins unless the user wants a combined app. Combined sites need distinct route prefixes and scoped fonts, styles, and layout.
-- Escape literal URL segments that conflict with framework syntax (`_`, `@`, brackets, parentheses) using its supported mechanism, then verify the actual requested URL.
+- 손대지 않은 템플릿 홈을 교체하는 첫 루트 복제는 허용됩니다.
+- 한 출처의 여러 페이지는 원본 경로를 보존하세요. 쿼리/프래그먼트 변형은 보통 같은 라우트의 상태이므로 그 상태를 재현하세요.
+- 기존에 작성된 라우트/에셋은 보존하세요. 요청받으면 업데이트하고, 요청받지 않은 라우트 충돌은 교체 전에 해결하세요.
+- 기존 복제에 페이지를 추가할 때는 기존 페이지가 쓰는 스타일을 교체하지 말고 레이아웃·전역 스타일을 확장하세요.
+- 사용자가 결합 앱을 원하지 않는 한 출처가 다르면 별도 앱을 쓰세요. 결합 사이트는 서로 다른 라우트 prefix와 스코프된 폰트·스타일·레이아웃이 필요합니다.
+- 프레임워크 문법과 충돌하는 리터럴 URL 조각(`_`, `@`, 대괄호, 소괄호)은 해당 프레임워크가 지원하는 방식으로 이스케이프한 뒤 실제로 요청한 URL을 검증하세요.
 
-Existing clones are useful starting points: compare them with the current source and record what was reused. Finish when every requested URL has a destination and file ownership is clear.
+기존 복제물은 좋은 출발점입니다. 현재 원본과 비교하고 무엇을 재사용했는지 기록하세요. 요청된 모든 URL의 목적지가 정해지고 파일 소유 관계가 명확해지면 완료입니다.
 
-## 2. Observe before building
+## 2. 만들기 전에 관찰
 
-Inspect the whole page at desktop and mobile widths. Scroll top to bottom to load lazy media and reveal sticky/pinned scenes. Then exercise menus, tabs, accordions, carousels, hover states, and primary links. Distinguish changes driven by **scroll, click, hover, or time**; a click imitation of a scroll-driven section is a different product.
+데스크톱·모바일 너비에서 페이지 전체를 살펴보세요. 위에서 아래로 스크롤해 지연 로딩 미디어를 불러오고 고정/핀(sticky/pinned) 장면을 드러내세요. 메뉴, 탭, 아코디언, 캐러셀, 호버 상태, 주요 링크를 직접 실행해 보세요. **스크롤·클릭·호버·시간** 중 무엇이 변화를 일으키는지 구분하세요. 스크롤 기반 섹션을 클릭으로 흉내 내면 다른 제품이 됩니다.
 
-Treat each observation as one sample of a **rule**. Read declared values (computed styles, CSS variables, a library's live options) rather than inferring them from one rendering, and vary viewport width (including wider than the design), viewport height, input, and state until you know what drives each change. Drive the page with the inputs visitors use (wheel, touch, keyboard, pointer); scripted scrolling bypasses behavior attached to them, such as smooth scrolling.
+각 관찰은 하나의 **규칙**에 대한 샘플로 다루세요. 한 번의 렌더링으로 추측하지 말고 선언된 값(계산된 스타일, CSS 변수, 라이브러리 실시간 옵션)을 읽고, 각 변화를 일으키는 원인을 알 때까지 뷰포트 너비(디자인보다 넓게 포함), 뷰포트 높이, 입력, 상태를 바꿔가며 확인하세요. 방문자가 쓰는 입력(휠, 터치, 키보드, 포인터)으로 페이지를 움직이세요. 스크립트로 스크롤하면 스무스 스크롤 같은 동작이 우회됩니다.
 
-Save source screenshots labeled with viewport, scroll position, and interaction state. Capture alternate-state content/assets. Keep one compact page brief: section order, typography, layout measurements, asset mapping, and interactions. Add section briefs only when they help independent builders.
+뷰포트·스크롤 위치·인터랙션 상태가 표시된 원본 스크린샷을 저장하세요. 대체 상태의 콘텐츠/에셋을 캡처하세요. 섹션 순서, 타이포그래피, 레이아웃 치수, 에셋 매핑, 인터랙션을 담은 간결한 페이지 브리프 하나를 유지하세요. 섹션 브리프는 독립 빌더에게 도움이 될 때만 추가하세요.
 
-Read [the inspection reference](references/inspection-guide.md) for extraction and state comparison. For **Framer-generated pages, sticky scenes, reveal animations, or animated media**, read [Framer and motion](references/framer-and-motion.md).
+추출·상태 비교 방법은 [살펴보기 레퍼런스](references/inspection-guide.md)를 읽으세요. **Framer로 만든 페이지, 고정 장면, 리빌 애니메이션, 움직이는 미디어**는 [Framer와 모션](references/framer-and-motion.md)을 읽으세요.
 
-Use the source's real text and the files it actually loads: fonts, images, SVGs, and video. A same-named substitute from another provider or icon set has different metrics or shapes. Measure important geometry/computed styles. Inspect layered images and media elements before rebuilding a visual as HTML. Track source URL → local asset path and verify content type/dimensions: a `.png` URL may return AVIF.
+원본의 실제 텍스트와 실제로 불러오는 파일을 쓰세요. 폰트, 이미지, SVG, 비디오가 대상입니다. 이름이 같은 타사 대체품이나 다른 아이콘 세트는 치수·모양이 다릅니다. 중요한 기하학/계산된 스타일을 재세요. 비주얼을 HTML로 다시 만들기 전에 겹친 이미지·미디어 요소를 살펴보세요. 원본 URL → 로컬 에셋 경로를 추적하고 콘텐츠 타입/치수를 검증하세요. `.png` URL이 AVIF를 반환할 수 있습니다.
 
-Finish when every section and meaningful state has enough evidence to build, with unavailable details identified. A large DOM dump does not replace looking at the page.
+모든 섹션과 의미 있는 상태마다 빌드할 충분한 근거가 모이고, 못 구한 세부 사항이 정리되면 완료입니다. 큰 DOM 덤프가 페이지를 직접 보는 일을 대신하지 못합니다.
 
-## 3. Build a complete first pass
+## 3. 첫 패스 완성본 만들기
 
-Establish fonts, page width, colors, assets, routes, page-wide behavior, and shared components first. Build each shared component with every observed state (hover, focus, breakpoints) so builders reuse it as-is. Reuse fitting components. Prefer CSS for layout/simple motion and an animation library when source behavior needs it.
+폰트, 페이지 너비, 색상, 에셋, 라우트, 페이지 전체 동작, 공유 컴포넌트를 먼저 잡으세요. 각 공유 컴포넌트는 관찰된 모든 상태(호버, 포커스, 브레이크포인트)를 갖춰 만들어서 빌더가 그대로 재사용하게 하세요. 맞는 컴포넌트는 재사용하세요. 레이아웃/단순 모션은 CSS를, 원본 동작에 필요하면 애니메이션 라이브러리를 쓰세요.
 
-Build coherent sections with real content. Delegate independent pages/sections after shared files have an owner. Give builders screenshots, relevant measurements/state notes, asset paths, destination files, and a concrete finish line. A concise brief with precise file references is enough; no fixed agent count or per-component paperwork is required.
+실제 콘텐츠로 일관된 섹션을 만드세요. 공유 파일 주인이 정해진 뒤에 독립 페이지/섹션을 위임하세요. 빌더에게는 스크린샷, 관련 치수/상태 메모, 에셋 경로, 목적지 파일, 구체적인 완료 기준을 주세요. 정확한 파일 참조가 담긴 간결한 브리프면 충분합니다. 정해진 에이전트 수나 컴포넌트별 서류는 필요 없습니다.
 
-Recreate in-scope interactions. Preserve real outbound destinations. Rewrite links to local routes when those routes are included; leave out-of-scope destinations pointing to the source and disclose them. Visible controls must perform the behavior they promise.
+범위 내 인터랙션을 재현하세요. 실제 외부 목적지는 유지하세요. 포함된 라우트로 향하는 링크는 로컬 라우트로 고치고, 범위 밖 목적지는 원본을 가리키게 둔 채 공개하세요. 보이는 컨트롤은 약속한 동작을 실제로 수행해야 합니다.
 
-Run the appropriate project check after an integrated slice. Finish this pass when every requested section/route renders with actual assets and important controls work.
+통합된 조각이 나오면 해당 프로젝트 검사를 실행하세요. 요청된 모든 섹션/라우트가 실제 에셋으로 렌더링되고 주요 컨트롤이 동작하면 이 패스는 완료입니다.
 
-## 4. Compare, repair, repeat
+## 4. 비교·수정·반복
 
-Open source/local pages at the **same viewport, scroll position, and state**. Let fonts, media, and reveal animations settle. Review the whole page wherever step 2 found a rule changing, plus a viewport wider than the design; judge scroll and pointer behavior with real input. A side-by-side montage locates drift; full-size sections establish detail.
+원본/로컬 페이지를 **같은 뷰포트·스크롤 위치·상태**에서 여세요. 폰트·미디어·리빌 애니메이션이 안정될 때까지 기다리세요. 2단계에서 규칙 변화를 찾은 곳마다, 그리고 디자인보다 넓은 뷰포트에서도 페이지 전체를 검토하세요. 스크롤·포인터 동작은 실제 입력으로 판단하세요. 나란히 붙인 몽타주는 틀어진 곳을 찾고, 원본 크기 섹션은 세부 사항을 확정합니다.
 
-Fix the largest visible differences first: geometry, missing sections/layers, typography/wrapping, asset crop, then spacing and motion. Recheck affected views. Compare animated regions in initial, active, and settled states, including reverse scroll when relevant.
+가장 크게 보이는 차이부터 고치세요: 기하학, 빠진 섹션/레이어, 타이포그래피/줄바꿈, 에셋 크롭, 그 다음 간격과 모션입니다. 영향받은 뷰를 다시 확인하세요. 애니메이션 영역은 초기·진행 중·종료 상태를 비교하고, 필요하면 역스크롤도 포함하세요.
 
-Exercise the real local workflow: navigation between cloned routes, mobile menu, tab/accordion states, carousel boundaries, primary actions, media controls, and observed scroll-linked transitions. Check runtime errors, missing assets, and horizontal overflow. When adding pages, verify existing routes still work. Use a few browser checks at these boundaries rather than assertions about class names.
+실제 로컬 흐름을 실행해 보세요: 복제된 라우트 간 이동, 모바일 메뉴, 탭/아코디언 상태, 캐러셀 경계, 주요 액션, 미디어 컨트롤, 관찰된 스크롤 연동 전환. 런타임 오류, 빠진 에셋, 가로 오버플로를 확인하세요. 페이지를 추가할 때는 기존 라우트가 여전히 동작하는지 검증하세요. 클래스명 단언 대신 이런 경계에서 몇 번의 브라우저 확인을 하세요.
 
-Run the project's production check. Completion requires a successful build **and** rendered comparison. State remaining differences precisely instead of calling an unchecked result pixel-perfect.
+프로젝트의 프로덕션 검사를 실행하세요. 완료 조건은 빌드 성공 **및** 렌더링된 비교입니다. 확인하지 않은 결과를 픽셀 퍼펙트라고 말하지 말고 남은 차이를 정확히 밝히세요.
 
-## Deliver
+## 결과물
 
-Return preview/run instructions, the source-to-local route map, representative desktop/mobile comparisons, checks actually run, and remaining visual/functional gaps. Keep reference clones in separate apps when maintaining the reusable template.
+미리보기/실행 방법, 원본-로컬 라우트 맵, 대표 데스크톱/모바일 비교, 실제 실행한 검사, 남은 시각·기능 차이를 반환하세요. 재사용 템플릿을 유지보수할 때는 참고용 복제물을 별도 앱에 두세요.

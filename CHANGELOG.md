@@ -1,148 +1,170 @@
-# Changelog
+# 변경 기록
 
-All notable changes to this project will be documented in this file.
+이 파일에는 이 프로젝트의 주요 변경 사항이 기록됩니다.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+형식은 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)를 따르며,
+이 프로젝트는 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)을 준수합니다.
 
-## [Unreleased]
+## [미출시]
 
-### Fixed
-- Count the README token badge in CI so it reflects the current default branch instead of a stale hosted count.
+### 수정됨
+
+- README 토큰 �지를 CI에서 집계해, 오래된 호스팅 집계가 아닌 현재 기본 브랜치를 반영하도록 했습니다.
 
 ## [0.6.1] - 2026-10-05
 
-### Changed
-- Generalize cloning guidance: treat each observation as a sample of a rule found by varying width, height, input, and state; use the source's actual files; and build shared components from every observed state.
+### 변경됨
+
+- 클로닝 가이드를 일반화했습니다. 너비·높이·입력·상태를 바꿔가며 각 관찰을 규칙 샘플로 다루고, 원본의 실제 파일을 사용하며, 관찰된 모든 상태에서 공유 컴포넌트를 만드세요.
 
 ## [0.6.0] - 2026-10-05
 
-### Changed
-- Simplify the shared website-cloning workflow, improve responsive and motion guidance, and align the project documentation.
+### 변경됨
+
+- 공유 웹사이트 클로닝 워크플로를 단순화하고, 반응형·모션 안내를 개선했으며, 프로젝트 문서를 정리했습니다.
 
 ## [0.5.1] - 2026-09-26
 
-### Changed
-- Recommend Claude Code with Opus 5.5 in the README
-- Refreshed the static Star History chart through September 2026
-- Removed a redundant note about editing the canonical skill from the README
+### 변경됨
 
-### Security
-- Update Next.js and eslint-config-next to 16.3.5 with exact version pins, and refresh vulnerable transitive dependencies. Thanks to @atahan150 for the report in [#117](https://github.com/JCodesMore/ai-website-cloner-template/issues/117) and proposed fix in [#118](https://github.com/JCodesMore/ai-website-cloner-template/pull/118).
+- README에서 Claude Code + Opus 5.5를 권장합니다
+- 정적 Star History 차트를 2026년 9월까지로 갱신했습니다
+- README에서 표준 스킬 편집 관련 중복 안내를 제거했습니다
+
+### 보안
+
+- Next.js와 eslint-config-next를 16.3.5로 업데이트하고 버전을 고정했으며, 취약한 전이 의존성을 갱신했습니다. [#117](https://github.com/JCodesMore/ai-website-cloner-template/issues/117)에서 신고하고 [#118](https://github.com/JCodesMore/ai-website-cloner-template/pull/118)에서 수정안을 제안한 @atahan150님께 감사드립니다.
 
 ## [0.5.0] - 2026-09-17
 
-### Added
-- Repository ranking badges in the README
+### 추가됨
 
-### Changed
-- Simplified Quick Start with a copyable agent setup prompt, a template button, and one cloning command example
-- Consolidated Claude Code, Codex, Cursor, and OpenCode support around one canonical Agent Skill in `.agents/skills/clone-website/`
-- Reduced the Claude Code integration to a thin command bridge that forwards arguments to the canonical skill without creating a duplicate skill in other agents
-- Moved the website inspection guide into the canonical skill's on-demand references
+- README에 저장소 순위 �지를 추가했습니다
 
-### Removed
-- Expired sponsor integrations
-- Japanese and Simplified Chinese READMEs; the English README is the single maintained entry point
-- Redundant workflow diagrams from the READMEs
-- Generated skill and instruction copies for unsupported or redundant agent platforms
-- The agent-rule and skill synchronization scripts and their generated-file CI gate
+### 변경됨
+
+- 복사 가능한 에이전트 설정 프롬프트, 템플릿 버튼, 하나의 클로닝 명령어 예시로 빠른 시작을 단순화했습니다
+- Claude Code, Codex, Cursor, OpenCode 지원을 `.agents/skills/clone-website/`의 표준 Agent Skill 하나로 통합했습니다
+- Claude Code 연동을 가벼운 명령어 브리지로 축소해, 다른 에이전트에 중복 스킬을 만들지 않고 인자를 표준 스킬로 전달합니다
+- 웹사이트 살펴보기 가이드를 표준 스킬의 주문형 레퍼런스로 옮겼습니다
+
+### 삭제됨
+
+- 만료된 스폰서 연동
+- 일본어·중국어 간체 README. 영어 README가 유일하게 유지되는 진입점입니다
+- README의 중복 워크플로 다이어그램
+- 지원하지 않거나 중복되는 에이전트 플랫폼용 생성 스킬·지침 사본
+- 에이전트 규칙·스킬 동기화 스크립트와 생성 파일 CI 게이트
 
 ## [0.4.0] - 2026-08-10
 
-### Added
-- Docker workflows for local development and multi-stage production builds
-- Kiro support through a generated workspace `/clone-website` skill
-- Complete generated workspace skills for Cline and Roo Code, including a Roo slash-command bridge
-- Simplified Chinese and Japanese READMEs with the same onboarding and workflow guidance as the English documentation
-- Contributor and security policies, including a private vulnerability-reporting path
-- CI enforcement that generated agent rules and skills remain synchronized with their source files
-- Compact pipeline diagrams and a static Star History chart in every README
+### 추가됨
 
-### Changed
-- Raised the project Node.js baseline to 24 across local development, CI, Docker, and contributor-facing documentation
-- Refreshed Next.js to 16.3, React to 19.2.4, and related dependencies
-- Updated `/clone-website` so later runs preserve existing pages and isolate routes, research, components, assets, and downloaders for each target
-- Improved multi-origin and query/fragment planning with collision-resistant output namespaces and explicit route verification
-- Redesigned README onboarding around the template workflow, Opus 5 recommendation, supported platforms, and community links
-- Hardened the rule and skill generators for current platform schemas and deterministic output
+- 로컬 개발과 다단계 프로덕션 빌드용 Docker 워크플로
+- 생성된 워크스페이스 `/clone-website` 스킬을 통한 Kiro 지원
+- Roo 슬래시 명령어 브리지를 포함한 Cline·Roo Code용 완성형 워크스페이스 스킬
+- 영어 문서와 동일한 온보딩·워크플로 안내를 담은 중국어 간체·일본어 README
+- 비공개 취약점 신고 경로를 포함한 기여자·보안 정책
+- 생성된 에이전트 규칙·스킬이 원본 파일과 동기화되도록 강제하는 CI
+- 모든 README에 간단한 파이프라인 다이어그램과 정적 Star History 차트
 
-### Fixed
-- Gemini CLI command validation by adding the required name and flattening the prompt schema
-- Cline and Roo Code invocation, frontmatter, and argument handling
-- Next.js documentation resolution in generated agent rules
-- Vulnerable framework dependencies and generated-file consistency checks
+### 변경됨
 
-### Removed
-- Aider from the officially supported-platform list because its current capabilities cannot run the complete browser and subagent workflow reliably; `.aider.conf.yml` remains available for loading general project context
+- 프로젝트 Node.js 기준을 로컬 개발, CI, Docker, 기여자 문서 전반에서 24로 올렸습니다
+- Next.js를 16.3, React를 19.2.4 및 관련 의존성으로 갱신했습니다
+- `/clone-website`가 이후 실행에서도 기존 페이지를 보존하고, 대상마다 라우트·리서치·컴포넌트·에셋·다운로더를 격리하도록 개선했습니다
+- 충돌 방지 출력 네임스페이스와 명시적 라우트 검증으로 다중 출처·쿼리/프래그먼트 계획을 개선했습니다
+- 템플릿 워크플로, Opus 5 권장, 지원 플랫폼, 커뮤니티 링크 중심으로 README 온보딩을 재설계했습니다
+- 최신 플랫폼 스키마와 결정적 출력에 맞게 규칙·스킬 생성기를 강화했습니다
 
-### Security
-- Documented responsible vulnerability disclosure through GitHub private vulnerability reporting
-- Updated vulnerable dependencies to patched releases
+### 수정됨
+
+- 필수 name 누락 수정과 프롬프트 스키마 평탄화로 Gemini CLI 명령어 검증을 고쳤습니다
+- Cline·Roo Code 호출, frontmatter, 인자 처리를 수정했습니다
+- 생성된 에이전트 규칙의 Next.js 문서 경로 해석을 수정했습니다
+- 취약한 프레임워크 의존성과 생성 파일 일관성 검사를 수정했습니다
+
+### 삭제됨
+
+- Aider를 공식 지원 플랫폼 목록에서 제외했습니다. 전체 브라우저·서브에이전트 워크플로를 안정적으로 실행할 수 없기 때문입니다. 일반 프로젝트 컨텍스트 로드용 `.aider.conf.yml`은 그대로 둡니다
+
+### 보안
+
+- GitHub 비공개 취약점 신고를 통한 책임 있는 공개 절차를 문서화했습니다
+- 취약한 의존성을 패치된 릴리스로 업데이트했습니다
 
 ## [0.3.1] - 2026-03-29
 
-### Fixed
-- `sync-agent-rules.sh` failing to resolve `@file` imports on Windows due to CRLF line endings — platform instruction files now correctly inline the Inspection Guide content
+### 수정됨
+
+- CRLF 줄바꿈 때문에 Windows에서 `sync-agent-rules.sh`가 `@file` 가져오기를 해석하지 못하던 문제. 이제 플랫폼 지침 파일에 Inspection Guide 내용이 올바르게 인라인됩니다
 
 ## [0.3.0] - 2026-03-29
 
-### Added
-- Multi-URL support for `/clone-website` — clone multiple sites in a single command with parallel processing and isolated output
-- CI quality gates via GitHub Actions — automated lint, typecheck, and build on every push and PR
-- `npm run typecheck` and `npm run check` scripts for local quality validation
-- `.gitattributes` for cross-platform line ending normalization
-- `.nvmrc` to pin Node.js 20 for contributor consistency
+### 추가됨
 
-### Changed
-- Streamlined PR template — removed redundant checklist items and screenshots section
-- Improved project description and README — clearer use cases, limitations, and modern wording
-- Refined documentation and agent rules across all platforms for clarity and consistency
-- Fixed CRLF handling in `sync-skills.mjs` for reliable Windows operation
+- `/clone-website` 다중 URL 지원 — 병렬 처리와 격리된 출력으로 한 번의 명령으로 여러 사이트 복제
+- GitHub Actions 기반 CI 품질 게이트 — 모든 푸시·PR마다 lint, typecheck, build 자동 실행
+- 로컬 품질 검증을 위한 `npm run typecheck`, `npm run check` 스크립트
+- 크로스플랫폼 줄바꿈 정규화용 `.gitattributes`
+- 기여자 일관성을 위한 Node.js 20 고정 `.nvmrc`
 
-### Removed
-- Outdated use case from README documentation
+### 변경됨
+
+- PR 템플릿 간소화 — 중복 체크리스트 항목과 스크린샷 섹션 제거
+- 프로젝트 설명·README 개선 — 사용 사례, 제한, 현대적 표현을 명확히 했습니다
+- 모든 플랫폼의 문서·에이전트 규칙을 명확하고 일관되게 다듬었습니다
+- 안정적인 Windows 동작을 위해 `sync-skills.mjs`의 CRLF 처리를 수정했습니다
+
+### 삭제됨
+
+- README 문서의 오래된 사용 사례
 
 ## [0.2.0] - 2026-03-28
 
-### Added
-- Multi-platform AI agent support: Claude Code, Codex CLI, OpenCode, GitHub Copilot, Cursor, Windsurf, Gemini CLI, Cline/Roo Code, Continue, Amazon Q, Augment Code, Aider
-- Platform-specific instruction files and `/clone-website` skill for each supported agent
-- `scripts/sync-agent-rules.sh` to regenerate platform instruction files from AGENTS.md
-- `scripts/sync-skills.mjs` to regenerate `/clone-website` skill across all platforms
-- GEMINI.md for Gemini CLI configuration
-- Supported Platforms table in README
-- "Updating for Other Platforms" documentation section in README
+### 추가됨
 
-### Changed
-- README now describes the project as multi-agent (Claude Code recommended, not required)
-- AGENTS.md updated with sync script reminders
+- 다중 플랫폼 AI 에이전트 지원: Claude Code, Codex CLI, OpenCode, GitHub Copilot, Cursor, Windsurf, Gemini CLI, Cline/Roo Code, Continue, Amazon Q, Augment Code, Aider
+- 지원 에이전트별 플랫폼 전용 지침 파일과 `/clone-website` 스킬
+- AGENTS.md에서 플랫폼 지침 파일을 재생성하는 `scripts/sync-agent-rules.sh`
+- 모든 플랫폼에 `/clone-website` 스킬을 재생성하는 `scripts/sync-skills.mjs`
+- Gemini CLI 설정용 GEMINI.md
+- README의 지원 플랫폼 표
+- README의 "다른 플랫폼용 업데이트" 문서 섹션
+
+### 변경됨
+
+- README가 멀티 에이전트 프로젝트를 설명하도록 변경 (Claude Code 권장, 필수 아님)
+- 동기화 스크립트 설명을 AGENTS.md에 업데이트
 
 ## [0.1.1] - 2026-03-28
 
-### Added
-- Bug report and feature request issue templates
-- Pull request template with checklist
-- CHANGELOG.md following Keep a Changelog format
-- Package.json metadata (description, repository, homepage, keywords, engines)
+### 추가됨
 
-### Fixed
-- LICENSE copyright holder now attributed to JCodesMore
+- 버그 신고·기능 요청 이슈 템플릿
+- 체크리스트가 있는 Pull Request 템플릿
+- Keep a Changelog 형식의 CHANGELOG.md
+- Package.json 메타데이터 (설명, 저장소, 홈페이지, 키워드, engines)
+
+### 수정됨
+
+- LICENSE 저작권자를 JCodesMore로 정정했습니다
 
 ## [0.1.0] - 2026-03-28
 
-### Added
-- Initial template scaffold for website reverse-engineering with Claude Code
-- `/clone-website` skill for full-site cloning pipeline
-- `/build-from-spec` and `/customize` skills
-- Parallel builder agents with git worktree isolation
-- Chrome MCP integration for design token extraction
-- Comprehensive inspection guide and project structure documentation
-- Next.js 16 + shadcn/ui + Tailwind CSS v4 base scaffold
-- MIT license
-- README with badges, demo section, quick start, and star history
+### 추가됨
 
-[Unreleased]: https://github.com/JCodesMore/ai-website-cloner-template/compare/v0.6.1...HEAD
+- Claude Code용 웹사이트 리버스엔지니어링 초기 템플릿 스캐폴드
+- 전체 사이트 클로닝 파이프라인용 `/clone-website` 스킬
+- `/build-from-spec`, `/customize` 스킬
+- git worktree 격리를 적용한 병렬 빌더 에이전트
+- 디자인 토큰 추출용 Chrome MCP 연동
+- 종합 살펴보기 가이드와 프로젝트 구조 문서
+- Next.js 16 + shadcn/ui + Tailwind CSS v4 기반 스캐폴드
+- MIT 라이선스
+- �지, 데모 섹션, 빠른 시작, 스타 히스토리를 담은 README
+
+[미출시]: https://github.com/JCodesMore/ai-website-cloner-template/compare/v0.6.1...HEAD
 [0.6.1]: https://github.com/JCodesMore/ai-website-cloner-template/compare/v0.6.0...v0.6.1
 [0.6.0]: https://github.com/JCodesMore/ai-website-cloner-template/compare/v0.5.1...v0.6.0
 [0.5.1]: https://github.com/JCodesMore/ai-website-cloner-template/compare/v0.5.0...v0.5.1
